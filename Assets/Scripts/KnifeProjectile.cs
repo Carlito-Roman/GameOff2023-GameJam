@@ -15,12 +15,22 @@ public class KnifeProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
+        //Find desired script
         ObjScaleManager objScale = collision.gameObject.GetComponent<ObjScaleManager>();
 
+
+        //Check that it isn't null
         if(objScale != null) {
+
+            //Call function
             objScale.ProcessScaleChange();
+
+            //Destroy GameObject
             Destroy(this.gameObject);
         } else {
+
+            //Otherwise, stop gameobject and destroy over time
             rb.isKinematic = true;
             Destroy(this.gameObject, 6f);
         }

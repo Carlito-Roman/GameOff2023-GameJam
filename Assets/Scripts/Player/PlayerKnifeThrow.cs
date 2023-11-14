@@ -14,6 +14,7 @@ namespace Com.DarkLynxDEV.Player
         [Header("Knife Throw - Prefab Reference")]
         [SerializeField] private GameObject knifePrefab;
 
+        [Header("Knife Throw - Firing Point/Barrel")]
         [SerializeField] private Transform firingPoint;
         [SerializeField] private float throwStrength;
 
@@ -25,11 +26,14 @@ namespace Com.DarkLynxDEV.Player
 
         private void ThrowKnife()
         {
+            //Find center of the screen
             Ray ray = playerFPSCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hitInfo;
 
+            //Determin destination based on what the raycast hits
             destination = Physics.Raycast(ray, out hitInfo) ? hitInfo.point : ray.GetPoint(1000);
 
+            //Throw knife at target
             ManageInstantiatedKnife();
         }
 

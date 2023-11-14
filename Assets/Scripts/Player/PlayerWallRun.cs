@@ -7,8 +7,10 @@ namespace Com.DarkLynxDEV.Player
 
         #region Variables
 
+        [Header("Wall Run - Target")]
         [SerializeField] private Transform orientationTarget;
 
+        [Header("Wall Run - Wall Run Variables")]
         [SerializeField] private float wallDistance = 0.5f;
         [SerializeField] private float minimumJumpHeight = 1.5f;
         [SerializeField] private LayerMask wallLayer;
@@ -16,10 +18,12 @@ namespace Com.DarkLynxDEV.Player
         private RaycastHit leftWallInfo, rightWallInfo;
         private bool jumpFromWall;
 
+        [Header("Wall Run - Wall Jump Variables")]
         [SerializeField] private float wallRunDownwardForce;
         [SerializeField] private float wallRunJumpForce;
         [SerializeField] private float wallJumpMultiplier = 60f;
 
+        [Header("Wall Run - Camera FOV Variables")]
         [SerializeField] private Camera camTarget;
         private float baseFOV;
         [SerializeField] private float wallRunFOV;

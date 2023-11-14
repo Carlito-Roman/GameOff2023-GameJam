@@ -7,19 +7,26 @@ namespace Com.DarkLynxDEV.Player
 
         #region Variables
 
+        [Header("Locomotion - Target")]
         [SerializeField] private Transform orientationTarget;
 
+        [Header("Locomotion - Movement Speed")]
         [SerializeField] private float moveSpeed;
         private float playerMoveSpeed;
 
+        [Header("Locomotion - Drag")]
         [SerializeField] private float groundDrag = 5f;
         [SerializeField] private float airDrag = 0f;
         [SerializeField] private float airMultiplier = 0.4f;
 
+        [Header("Locomotion - Ground Check")]
         [SerializeField] private Transform groundCheck;
         [SerializeField] private LayerMask groundLayer;
 
+        [Header("Locomotion - Jump Strength")]
         [SerializeField] private float jumpStrength;
+
+        [Header("Locomotion - Amount of Jumps")]
         [SerializeField] private int jumpCount = 2;
         private int jumpsLeft;
 

@@ -1,4 +1,5 @@
 
+using Com.DarkLynxDEV.Player;
 using UnityEngine;
 
 public class TowerSegment : MonoBehaviour
@@ -12,24 +13,21 @@ public class TowerSegment : MonoBehaviour
 
     #region MonoBehaviour Callbacks
 
-    private void Start()
-    {
+    private void Start() {
         towerSpawner = FindObjectOfType<TowerSpawner>();
         boxCollider = GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        towerSpawner.SpawnTowerSegment();
-        boxCollider.enabled = false;
+        //Check that the collider that triggers is a player
+        if(other.gameObject.CompareTag("Player")) {
 
+            //Create the next tower segment and disable the trigger collider
+            towerSpawner.SpawnTowerSegment();
+            boxCollider.enabled = false;
+        }
     }
 
-    #endregion
-
-    #region Private Methods
-    #endregion
-
-    #region Public Methods
     #endregion
 }

@@ -7,12 +7,15 @@ public class ObjScaleManager : MonoBehaviour
 
     #region Variables
 
+    [Header("Object Scale - Animation Curve")]
     [SerializeField] private AnimationCurve curve;
 
+    [Header("Object Scale - Target Scale")]
     [SerializeField] private Vector3 scaleGoal;
     private Vector3 originalScale;
     private Vector3 targetScaleGoal;
 
+    [Header("Object Scale - Scale Lerp Variables")]
     [SerializeField] private float scaleSmoothing;
     [SerializeField] private float scaleDuration;
     private float currentState, targetState;
@@ -36,9 +39,13 @@ public class ObjScaleManager : MonoBehaviour
 
     private void HandleObjectScale()
     {
+        //Change target based on bool
         targetState = !canScale ? 0 : 1;
+
+        //Modify the speed at which I move from current to target
         currentState = Mathf.MoveTowards(currentState, targetState, scaleSmoothing * Time.deltaTime);
 
+        //Modify Scale based on animation curve and current lerp value
         transform.localScale = Vector3.Lerp(originalScale, scaleGoal * curve.Evaluate(currentState), curve.Evaluate(currentState));
     }
 

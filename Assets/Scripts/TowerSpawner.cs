@@ -15,8 +15,8 @@ public class TowerSpawner : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 3; i++)
-        {
+        //Test
+        for (int i = 0; i < 3; i++) {
             SpawnTowerSegment();
         }
     }
@@ -32,6 +32,8 @@ public class TowerSpawner : MonoBehaviour
 
     public void SpawnTowerSegment()
     {
+
+        //Spawn a new segment and set its empty gameObject to the next spawn point
         GameObject tempTower = Instantiate(towerSegmentPrefab, nextSpawnPoint, Quaternion.identity);
         nextSpawnPoint = tempTower.transform.GetChild(1).transform.position;
     }
