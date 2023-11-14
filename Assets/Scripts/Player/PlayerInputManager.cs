@@ -15,11 +15,13 @@ namespace Com.DarkLynxDEV.Player
 
         [Header("Input - Action Keys")]
         private bool jumpKey;
+        private bool throwKey;
 
         [Header("Script References")]
         private PlayerLocomotion locomotion;
         private PlayerCamera camera;
         private PlayerWallRun wallRun;
+        private PlayerKnifeThrow knife;
 
         #endregion
 
@@ -35,6 +37,7 @@ namespace Com.DarkLynxDEV.Player
 
             locomotion.ProcessJump(jumpKey);
             wallRun.ProcessWallJump(jumpKey);
+            knife.ProcessKnifeThrow(throwKey);
         }
 
         #endregion
@@ -65,6 +68,7 @@ namespace Com.DarkLynxDEV.Player
         private void HandleKeyInput()
         {
             jumpKey = Input.GetKeyDown(KeyCode.Space);
+            throwKey = Input.GetMouseButtonDown(0);
         }
 
         #endregion
@@ -74,6 +78,7 @@ namespace Com.DarkLynxDEV.Player
             locomotion = GetComponent<PlayerLocomotion>();
             camera = GetComponent<PlayerCamera>();
             wallRun = GetComponent<PlayerWallRun>();
+            knife = GetComponent<PlayerKnifeThrow>();
         }
 
         #endregion
